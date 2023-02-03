@@ -2,6 +2,7 @@ import { Grid } from '@mui/material'
 import productsArray from 'utils/productsArray'
 import ProductsListItem from './ProductsListItem'
 import './ShopPage.css'
+import { useState } from 'react'
 
 type ProductProps = {
     id: number
@@ -12,6 +13,7 @@ type ProductProps = {
 
 type Props = {}
 const ProductList = (props: Props) => {
+    const [countSum, setCountSum] = useState<number>(0)
     return (
         <>
             <Grid
@@ -28,12 +30,13 @@ const ProductList = (props: Props) => {
                                 title={title}
                                 desc={desc}
                                 price={price}
+                                setCountSum={setCountSum}
                             />
                         </Grid>
                     )
                 )}
             </Grid>
-            <div className="center">total: </div>
+            <div className="center">total: {countSum} </div>
         </>
     )
 }
