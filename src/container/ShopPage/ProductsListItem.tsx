@@ -22,8 +22,9 @@ const ProductsListItem: FC<Props> = ({ title, desc, price, setCountSum }) => {
         }))
     }
     useEffect(() => {
-        setCountSum((prevState: number) => prevState + cartData.totalPrice)
-    }, [setCountSum, cartData.totalPrice])
+        if (cartData.totalPrice !== 0)
+        setCountSum((prevState: number) => prevState + price)
+    }, [setCountSum, cartData.totalPrice, price])
     return (
         <Card variant="outlined" className="product">
             <CardContent>
